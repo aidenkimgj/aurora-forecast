@@ -57,13 +57,20 @@ const Auth = () => {
       target: { name },
     } = e;
     let provider;
+
     if (name === 'google') {
       provider = new firebaseInstance.auth.GoogleAuthProvider();
-    } else if (name === 'github') {
-      provider = new firebaseInstance.auth.GithubAuthProvider();
+    } else if (name === 'facebook') {
+      provider = new firebaseInstance.auth.FacebookAuthProvider();
     }
-    const data = await authService.signInWithPopup(provider);
-    console.log(data);
+
+    try {
+      const data = await authService.signInWithPopup(provider);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
+    }
   };
 
   return (
@@ -120,11 +127,11 @@ const Auth = () => {
             </Button>
             <Button
               block
-              name="github"
+              name="facebook"
               className="mb-4"
               onClick={onSocialClick}
             >
-              Continue with Github
+              Continue with Facebook
             </Button>
           </CardFooter>
         </Card>

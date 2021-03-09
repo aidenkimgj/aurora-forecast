@@ -18,6 +18,8 @@ const Home = () => {
         } = position;
 
         getAuroraForecast(latitude, longitude);
+        console.log('latitude ===>', latitude);
+        console.log('longitude ===>', longitude);
       });
     } catch (error) {
       alert("Can't find you");
