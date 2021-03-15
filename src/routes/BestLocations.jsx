@@ -15,7 +15,7 @@ const BestLocations = () => {
 
   return (
     <>
-      <div>BestLocations</div>
+      <h1>BestLocations</h1>
     </>
   );
 };
