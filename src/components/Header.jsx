@@ -1,12 +1,15 @@
 import React from 'react';
-import Navigation from './Navigation';
+import { Col, Row } from 'reactstrap';
 
 const Header = () => {
   return (
-    <>
-      <h1>Aurora Forecast</h1>
-      <Navigation />
-    </>
+    <div id="page-header" className="mb-3">
+      <Row>
+        <Col md="6" sm="auto" className="text-center m-auto">
+          <h1>Aurora Forecast</h1>
+        </Col>
+      </Row>
+    </div>
   );
 };
 

@@ -7,12 +7,14 @@ import BestLocations from '../routes/BestLocations';
 import AuroraMap from '../routes/AuroraMap';
 import Gallery from '../routes/Gallery';
 import Header from './Header';
+import Navigation from './Navigation';
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
-    <Container id="main-body">
-      <Router>
-        <Header />
+    <>
+      <Navigation />
+      <Header />
+      <Container id="main-body">
         <Switch>
           {isLoggedIn ? (
             <Route path="/" exact component={Home} />
@@ -23,8 +25,8 @@ const AppRouter = ({ isLoggedIn }) => {
           <Route path="/auroramap" exact component={AuroraMap} />
           <Route path="/gallery" exact component={Gallery} />
         </Switch>
-      </Router>
-    </Container>
+      </Container>
+    </>
   );
 };
 

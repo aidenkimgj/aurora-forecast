@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import firebase from './fbInstance';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/scss/base.scss';
 import App from './components/App';
+import { BrowserRouter } from 'react-router-dom';
 
-console.log(firebase);
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
+);
