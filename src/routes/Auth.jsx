@@ -75,7 +75,7 @@ const Auth = () => {
 
   return (
     <>
-      <Col sm="12" md={{ size: 6, offset: 3 }} className="login">
+      <Col sm="12" md={{ size: 4, offset: 4 }} className="login">
         <Card>
           <CardHeader id="card-header">
             <strong>Login</strong>

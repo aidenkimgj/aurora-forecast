@@ -11,9 +11,11 @@ import {
 } from 'reactstrap';
 import { authService } from '../fbInstance';
 
-const Navigation = () => {
+const Navigation = ({ isLoggedIn }) => {
   const [isOpen, setIsOpen] = useState(false);
   const history = useHistory();
+
+  console.log(isLoggedIn, '네비게이션에서');
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -23,20 +25,6 @@ const Navigation = () => {
     authService.signOut();
     history.push('/');
   };
-  //   <ul>
-  //   <li>
-  //     <Link to="/">Home</Link>
-  //   </li>
-  //   <li>
-  //     <Link to="/bestlocations">Best Locations</Link>
-  //   </li>
-  //   <li>
-  //     <Link to="/auroramap">Aurora Map</Link>
-  //   </li>
-  //   <li>
-  //     <Link to="/gallery">Gallery</Link>
-  //   </li>
-  // </ul>
 
   return (
     <Navbar color="dark" dark expand="lg" className="sticky-top">
@@ -46,7 +34,11 @@ const Navigation = () => {
         </Link>
         <NavbarToggler onClick={handleToggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto d-felx justify-content-around" navbar>
+          <Nav
+            className="ml-auto d-felx justify-content-around"
+            navbar
+            style={{ fontWeight: 'bold' }}
+          >
             <NavItem>
               <Form className="col pr-3 p-1">
                 <Link to="/" className="text-decoration-none">
@@ -75,17 +67,21 @@ const Navigation = () => {
                 </Link>
               </Form>
             </NavItem>
-            <NavItem>
-              <Form className="col p-1">
-                <Link
-                  onClick={onLogout}
-                  to="#"
-                  className="text-decoration-none"
-                >
-                  Logout
-                </Link>
-              </Form>
-            </NavItem>
+            {isLoggedIn ? (
+              <NavItem>
+                <Form className="col p-1">
+                  <Link
+                    onClick={onLogout}
+                    to="#"
+                    className="text-decoration-none"
+                  >
+                    Logout
+                  </Link>
+                </Form>
+              </NavItem>
+            ) : (
+              ''
+            )}
           </Nav>
         </Collapse>
       </Container>
