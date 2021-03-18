@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [city, setCity] = useState('Yellowknife');
+  const [city, setCity] = useState('YeLlowknife');
 
   const OPEN_CAGE_API = process.env.REACT_APP_OPENCAGE_API_KEY;
 
@@ -17,7 +17,7 @@ const Home = () => {
   const getLocation = async () => {
     try {
       if (city !== '') {
-        console.log('city===>', city);
+        console.log('city===>', city.toLowerCase());
         console.log('api ===>', OPEN_CAGE_API);
         const location = await axios.get(
           `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${OPEN_CAGE_API}`
@@ -28,7 +28,7 @@ const Home = () => {
         const {
           geometry: { lat, lng },
         } = location.data.results.find(
-          result => result.components.city === city
+          result => result.components.city.toLowerCase() === city.toLowerCase()
         );
 
         getAuroraForecast(lat, lng);
