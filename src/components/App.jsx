@@ -6,6 +6,19 @@ import Footer from './Footer';
 const App = () => {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currLocation, setCurrLocation] = useState({
+    lat: '',
+    lng: '',
+  });
+
+  const currentLocation = () => {
+    navigator.geolocation.getCurrentPosition(position => {
+      const {
+        coords: { latitude, longitude },
+      } = position;
+      setCurrLocation({ lat: latitude, lng: longitude });
+    });
+  };
 
   useEffect(() => {
     authService.onAuthStateChanged(user => {
@@ -17,11 +30,17 @@ const App = () => {
       }
       setInit(true);
     });
+
+    currentLocation();
   }, []);
 
   return (
     <>
-      {init ? <AppRouter isLoggedIn={isLoggedIn} /> : 'Initializing....'}
+      {init ? (
+        <AppRouter isLoggedIn={isLoggedIn} location={currLocation} />
+      ) : (
+        'Initializing....'
+      )}
       <Footer />
     </>
   );

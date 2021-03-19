@@ -9,8 +9,12 @@ import Gallery from '../routes/Gallery';
 import Header from './Header';
 import Navigation from './Navigation';
 
-const AppRouter = ({ isLoggedIn }) => {
-  console.log(isLoggedIn, '로그인 정보');
+const AppRouter = ({ isLoggedIn, location }) => {
+  const withProps = (Component, props) => {
+    return matchProps => {
+      return <Component {...props} {...matchProps} />;
+    };
+  };
 
   return (
     <>
@@ -20,9 +24,17 @@ const AppRouter = ({ isLoggedIn }) => {
         <Switch>
           {isLoggedIn ? (
             <>
-              <Route path="/" exact component={Home} />
+              <Route
+                path="/"
+                exact
+                component={withProps(Home, { position: location })}
+              />
               <Route path="/bestlocations" exact component={BestLocations} />
-              <Route path="/auroramap" exact component={AuroraMap} />
+              <Route
+                path="/auroramap"
+                exact
+                component={withProps(AuroraMap, { center: location })}
+              />
               <Route path="/gallery" exact component={Gallery} />
             </>
           ) : (

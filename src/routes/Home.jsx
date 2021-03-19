@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
-const Home = () => {
-  const [city, setCity] = useState('YeLlowknife');
+const Home = ({ position }) => {
+  const [city, setCity] = useState('yellowknife');
+  const [currentLocation, setCurrentLocation] = useState(position);
 
   const OPEN_CAGE_API = process.env.REACT_APP_OPENCAGE_API_KEY;
 
@@ -35,17 +35,8 @@ const Home = () => {
         console.log('latitude ===>', lat);
         console.log('longitude ===>', lng);
       } else {
-        navigator.geolocation.getCurrentPosition(position => {
-          const {
-            coords: { latitude, longitude },
-          } = position;
-
-          getAuroraForecast(latitude, longitude);
-          console.log('latitude ===>', latitude);
-          console.log('longitude ===>', longitude);
-        });
+        getAuroraForecast(currentLocation.lat, currentLocation.lng);
       }
-      // Current postion
     } catch (error) {
       alert("Can't find location");
     }

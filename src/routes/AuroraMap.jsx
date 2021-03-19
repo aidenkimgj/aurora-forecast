@@ -1,64 +1,39 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import React from 'react';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
+import mapStyles from '../assets/mapStyles';
 
-const containerStyle = {
-  width: '400px',
-  height: '400px',
+const mapStyle = {
+  width: '100%',
+  height: '800px',
 };
+const GOOGLE_API = process.env.REACT_APP_GOOGLE_API_KEY;
+const AuroraMap = ({ center, props }) => {
+  console.log('current location', center);
 
-const center = {
-  lat: -3.745,
-  lng: -38.523,
-};
-
-const AuroraMap = () => {
-  const [map, setMap] = useState(null);
-  const GOOGLE_API = process.env.REACT_APP_GOOGLE_API_KEY;
-
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: GOOGLE_API,
-  });
-
-  const onLoad = useCallback(map => {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map);
-  }, []);
-
-  const onUnmount = useCallback(map => {
-    setMap(null);
-  }, []);
-
-  // const getGoogleMap = async () => {
-  //   const data = await axios.get(
-  //     `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API}&callback=initMap&region=kr`
-  //   );
-
-  //   console.log(data, 'map data');
-  // };
-
-  // useEffect(() => {
-  //   getGoogleMap();
-  // }, []);
   return (
     <>
       <h1>AuroraMap</h1>
-      {isLoaded ? (
+      {/* <LoadScript googleMapsApiKey={GOOGLE_API} id="c9f683c11539dc9b">
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
-        >
-          <></>
-        </GoogleMap>
-      ) : (
-        <></>
-      )}
+          zoom={4}
+          
+        />
+      </LoadScript> */}
+
+      <Map
+        containerStyle={mapStyle}
+        google={props.google}
+        styles={mapStyles.mapstyle}
+        zoom={2}
+        initialCenter={center}
+      />
     </>
   );
 };
 
-export default AuroraMap;
+export default GoogleApiWrapper({
+  apiKey: GOOGLE_API,
+})(AuroraMap);
