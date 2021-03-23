@@ -63,7 +63,7 @@ const Navigation = ({ isLoggedIn }) => {
             <NavItem>
               <Form className="col pr-3 p-1">
                 <Link to="/gallery" className="text-decoration-none">
-                  Gallery
+                  Aurora Observatory
                 </Link>
               </Form>
             </NavItem>

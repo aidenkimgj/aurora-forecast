@@ -8,24 +8,11 @@ import axios from 'axios';
 const GOOGLE_API = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const AuroraMap = ({ center }) => {
-  const [auroraMap, setAuroraMap] = useState([]);
+  const [aurora, setAurora] = useState([]);
 
   const AnyReactComponent = () => (
     <FontAwesomeIcon icon={faMapMarkerAlt} size="3x" />
   );
-
-  const AuroraColorComponent = ({ aurora }) => {
-    return (
-      <div
-        style={{
-          backgroundColor: 'red',
-          width: '15px',
-          height: '20px',
-          opacity: '0.2',
-        }}
-      ></div>
-    );
-  };
 
   const getAuroraMap = async () => {
     const data = await axios.get(
@@ -33,11 +20,33 @@ const AuroraMap = ({ center }) => {
     );
 
     console.log(data);
-    setAuroraMap(
+
+    // Api에서 받은 것(용량이 너무큼)을 필터를 거쳐 다시 state로 저장
+
+    setAurora(
       data.data.coordinates
-        .map(location => location)
-        .filter(coordinates => coordinates[2] !== 0)
+        .map(location => {
+          let temp = location[0];
+          location[0] = location[1];
+          location[1] = temp;
+          return [location[0], location[1], location[2]];
+        })
+        .filter(coordinates => coordinates[2] > 0)
     );
+  };
+
+  const data = aurora.map(place => ({
+    lat: place[0],
+    lng: place[1],
+    weight: place[2],
+  }));
+
+  const heatmapData = {
+    positions: data,
+    options: {
+      radius: 40,
+      opacity: 0.5,
+    },
   };
 
   useEffect(() => {
@@ -48,22 +57,15 @@ const AuroraMap = ({ center }) => {
     <>
       <h1>AuroraMap</h1>
 
-      <div style={{ height: '80vh', width: '100%' }}>
+      <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: GOOGLE_API }}
+          bootstrapURLKeys={{ key: GOOGLE_API, libraries: ['visualization'] }}
           defaultCenter={center}
-          defaultZoom={4}
+          defaultZoom={3}
+          heatmap={heatmapData}
           options={mapStyles}
         >
           <AnyReactComponent lat={center.lat} lng={center.lng} />
-          {auroraMap.map(location => (
-            <AuroraColorComponent
-              key={location}
-              lat={location[1]}
-              lng={location[0]}
-              aurora={location[2]}
-            />
-          ))}
         </GoogleMapReact>
       </div>
     </>
