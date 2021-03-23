@@ -3,16 +3,23 @@ import { Link, useHistory } from 'react-router-dom';
 import {
   Collapse,
   Container,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
   Form,
   Nav,
   Navbar,
   NavbarToggler,
   NavItem,
+  NavLink,
 } from 'reactstrap';
 import { authService } from '../fbInstance';
 
 const Navigation = ({ isLoggedIn }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropRight, setDropright] = useState(false);
   const history = useHistory();
 
   console.log(isLoggedIn, '네비게이션에서');
@@ -20,6 +27,9 @@ const Navigation = ({ isLoggedIn }) => {
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
+
+  const toggle = () => setDropdownOpen(prevState => !prevState);
+  const mouseOver = () => setDropright(prevState => !prevState);
 
   const onLogout = () => {
     authService.signOut();
@@ -41,42 +51,68 @@ const Navigation = ({ isLoggedIn }) => {
           >
             <NavItem>
               <Form className="col pr-3 p-1">
-                <Link to="/" className="text-decoration-none">
-                  Home
-                </Link>
+                <NavLink>
+                  <Link to="/" className="text-decoration-none">
+                    Home
+                  </Link>
+                </NavLink>
               </Form>
             </NavItem>
             <NavItem>
               <Form className="col pr-3 p-1">
-                <Link to="/bestlocations" className="text-decoration-none">
-                  Best Locations
-                </Link>
+                <NavLink>
+                  <Link to="/bestlocations" className="text-decoration-none">
+                    Best Locations
+                  </Link>
+                </NavLink>
               </Form>
             </NavItem>
             <NavItem>
               <Form className="col pr-3 p-1">
-                <Link to="/auroramap" className="text-decoration-none">
-                  Aurora Map
-                </Link>
+                <NavLink>
+                  <Link to="/auroramap" className="text-decoration-none">
+                    Aurora Map
+                  </Link>
+                </NavLink>
               </Form>
             </NavItem>
             <NavItem>
               <Form className="col pr-3 p-1">
-                <Link to="/observatory" className="text-decoration-none">
-                  Observatory
-                </Link>
+                <div className="drop-menu">
+                  <Dropdown nav isOpen={dropdownOpen} toggle={toggle}>
+                    <DropdownToggle nav caret>
+                      <Link to="#" className="text-decoration-none">
+                        Observatory
+                      </Link>
+                    </DropdownToggle>
+                    <DropdownMenu>
+                      <DropdownItem>
+                        <Link to="/auroramax" className="text-decoration-none">
+                          AuroraMax
+                        </Link>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <Link to="/replay" className="text-decoration-none">
+                          AuroraMax Replay
+                        </Link>
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </Dropdown>
+                </div>
               </Form>
             </NavItem>
             {isLoggedIn ? (
               <NavItem>
                 <Form className="col p-1">
-                  <Link
-                    onClick={onLogout}
-                    to="#"
-                    className="text-decoration-none"
-                  >
-                    Logout
-                  </Link>
+                  <NavLink>
+                    <Link
+                      onClick={onLogout}
+                      to="#"
+                      className="text-decoration-none"
+                    >
+                      Logout
+                    </Link>
+                  </NavLink>
                 </Form>
               </NavItem>
             ) : (
