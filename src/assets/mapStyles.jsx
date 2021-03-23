@@ -1,5 +1,5 @@
 export default {
-  mapstyle: [
+  styles: [
     {
       featureType: 'all',
       elementType: 'geometry',

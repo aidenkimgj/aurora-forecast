@@ -36,12 +36,14 @@ const App = () => {
 
   return (
     <>
-      {init ? (
-        <AppRouter isLoggedIn={isLoggedIn} location={currLocation} />
-      ) : (
-        'Initializing....'
-      )}
-      <Footer />
+      <div style={{ backgroundColor: '#0C0C0E' }}>
+        {init ? (
+          <AppRouter isLoggedIn={isLoggedIn} location={currLocation} />
+        ) : (
+          'Initializing....'
+        )}
+        <Footer />
+      </div>
     </>
   );
 };
