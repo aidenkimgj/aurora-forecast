@@ -5,7 +5,7 @@ import Auth from '../routes/Auth';
 import { Container } from 'reactstrap';
 import BestLocations from '../routes/BestLocations';
 import AuroraMap from '../routes/AuroraMap';
-import Gallery from '../routes/Gallery';
+import Observatory from '../routes/Observatory';
 import Header from './Header';
 import Navigation from './Navigation';
 
@@ -35,14 +35,14 @@ const AppRouter = ({ isLoggedIn, location }) => {
                 exact
                 component={withProps(AuroraMap, { center: location })}
               />
-              <Route path="/gallery" exact component={Gallery} />
+              <Route path="/observatory" exact component={Observatory} />
             </>
           ) : (
             <>
               <Route path="/" exact component={Auth} />
               <Route path="/bestlocations" exact component={Auth} />
               <Route path="/auroramap" exact component={Auth} />
-              <Route path="/gallery" exact component={Auth} />
+              <Route path="/observatory" exact component={Auth} />
             </>
           )}
         </Switch>

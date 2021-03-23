@@ -44,8 +44,8 @@ const AuroraMap = ({ center }) => {
   const heatmapData = {
     positions: data,
     options: {
-      radius: 40,
-      opacity: 0.5,
+      radius: 60,
+      opacity: 0.6,
     },
   };
 
@@ -55,13 +55,13 @@ const AuroraMap = ({ center }) => {
 
   return (
     <>
-      <h1>AuroraMap</h1>
+      <h2>AuroraMap</h2>
 
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '70vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: GOOGLE_API, libraries: ['visualization'] }}
           defaultCenter={center}
-          defaultZoom={3}
+          defaultZoom={8}
           heatmap={heatmapData}
           options={mapStyles}
         >
