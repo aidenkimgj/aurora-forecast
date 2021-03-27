@@ -61,7 +61,7 @@ const AuroraMap = ({ center }) => {
         <GoogleMapReact
           bootstrapURLKeys={{ key: GOOGLE_API, libraries: ['visualization'] }}
           defaultCenter={center}
-          defaultZoom={8}
+          defaultZoom={4}
           heatmap={heatmapData}
           options={mapStyles}
         >

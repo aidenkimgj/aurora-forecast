@@ -19,7 +19,6 @@ import { authService } from '../fbInstance';
 const Navigation = ({ isLoggedIn }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [dropRight, setDropright] = useState(false);
   const history = useHistory();
 
   console.log(isLoggedIn, '네비게이션에서');
@@ -28,8 +27,7 @@ const Navigation = ({ isLoggedIn }) => {
     setIsOpen(!isOpen);
   };
 
-  const toggle = () => setDropdownOpen(prevState => !prevState);
-  const mouseOver = () => setDropright(prevState => !prevState);
+  const mouseOn = () => setDropdownOpen(prevState => !prevState);
 
   const onLogout = () => {
     authService.signOut();
@@ -79,16 +77,16 @@ const Navigation = ({ isLoggedIn }) => {
             <NavItem>
               <Form className="col pr-3 p-1">
                 <div className="drop-menu">
-                  <Dropdown nav isOpen={dropdownOpen} toggle={toggle}>
-                    <DropdownToggle nav caret>
+                  <Dropdown nav isOpen={dropdownOpen}>
+                    <DropdownToggle nav caret onMouseEnter={mouseOn}>
                       <Link to="#" className="text-decoration-none">
                         Observatory
                       </Link>
                     </DropdownToggle>
-                    <DropdownMenu>
+                    <DropdownMenu onMouseLeave={mouseOn}>
                       <DropdownItem>
-                        <Link to="/auroramax" className="text-decoration-none">
-                          AuroraMax
+                        <Link to="/live" className="text-decoration-none">
+                          AuroraMax Live
                         </Link>
                       </DropdownItem>
                       <DropdownItem>
@@ -126,3 +124,7 @@ const Navigation = ({ isLoggedIn }) => {
 };
 
 export default Navigation;
+
+<Link to="/auroramax" className="text-decoration-none">
+  AuroraMax
+</Link>;
