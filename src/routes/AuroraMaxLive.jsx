@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const AuroraMaxLive = () => {
@@ -12,8 +11,7 @@ const AuroraMaxLive = () => {
   };
 
   const refreshImg = () => {
-    setInterval('getAuroraMaxLive()', 3000);
-    getAuroraMaxLive();
+    setInterval(getAuroraMaxLive(), 3000);
   };
 
   useEffect(() => {
@@ -22,9 +20,11 @@ const AuroraMaxLive = () => {
 
   return (
     <>
-      <div onMouseOver={refreshImg}>
-        <h1>AuroraMaxLive</h1>
-        <img alt="" id="aurora" src={img} class="full-width"></img>
+      <div>
+        <h1>AuroraMax Live</h1>
+        <div className="aurora-live">
+          <img alt="" id="aurora" src={img} onLoad={refreshImg} />
+        </div>
       </div>
     </>
   );

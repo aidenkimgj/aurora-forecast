@@ -36,7 +36,7 @@ const App = () => {
 
   return (
     <>
-      <div style={{ backgroundColor: '#0C0C0E' }}>
+      <div style={{ backgroundColor: '#020101' }}>
         {init ? (
           <AppRouter isLoggedIn={isLoggedIn} location={currLocation} />
         ) : (

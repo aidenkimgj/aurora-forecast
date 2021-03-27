@@ -79,9 +79,7 @@ const Navigation = ({ isLoggedIn }) => {
                 <div className="drop-menu">
                   <Dropdown nav isOpen={dropdownOpen}>
                     <DropdownToggle nav caret onMouseEnter={mouseOn}>
-                      <Link to="#" className="text-decoration-none">
-                        Observatory
-                      </Link>
+                      Observatory
                     </DropdownToggle>
                     <DropdownMenu onMouseLeave={mouseOn}>
                       <DropdownItem>
