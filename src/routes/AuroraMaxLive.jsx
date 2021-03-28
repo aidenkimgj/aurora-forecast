@@ -5,7 +5,7 @@ const AuroraMaxLive = () => {
 
   const getAuroraMaxLive = () => {
     let d = new Date().getTime();
-    let data = `https://auroramax.phys.ucalgary.ca/recent/recent_480p.jpg?${d}`;
+    let data = `https://auroramax.phys.ucalgary.ca/recent/recent_720p.jpg?${d}`;
 
     setImg(data);
   };
@@ -21,8 +21,8 @@ const AuroraMaxLive = () => {
   return (
     <>
       <div>
-        <h1>AuroraMax Live</h1>
-        <div className="aurora-live">
+        <h3>AuroraMax Live</h3>
+        <div className="aurora-live" style={{ marginTop: '50px' }}>
           <img alt="" id="aurora" src={img} onLoad={refreshImg} />
         </div>
       </div>
