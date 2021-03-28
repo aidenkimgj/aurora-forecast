@@ -38,7 +38,7 @@ const Navigation = ({ isLoggedIn }) => {
     <Navbar color="dark" dark expand="lg" className="sticky-top">
       <Container>
         <Link to="/" className="text-white text-decoration-none blog-name">
-          <h2 style={{ fontWeight: 'bold' }}>Aurora Forecast</h2>
+          <h2 style={{ fontWeight: 'bold' }}>Aurora World</h2>
         </Link>
         <NavbarToggler onClick={handleToggle} />
         <Collapse isOpen={isOpen} navbar>
