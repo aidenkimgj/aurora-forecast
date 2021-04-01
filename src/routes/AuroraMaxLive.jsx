@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 
 const AuroraMaxLive = () => {
-  const [img, setImg] = useState(null);
+  const [img, setImage] = useState(
+    `https://auroramax.phys.ucalgary.ca/recent/recent_720p.jpg?${new Date().getTime()}`
+  );
+  console.log(img, 'image');
 
   const getAuroraMaxLive = () => {
     let d = new Date().getTime();
     let data = `https://auroramax.phys.ucalgary.ca/recent/recent_720p.jpg?${d}`;
-
-    setImg(data);
-  };
-
-  const refreshImg = () => {
-    setInterval(getAuroraMaxLive(), 3000);
+    setImage(data);
   };
 
   useEffect(() => {
-    getAuroraMaxLive();
+    setInterval(() => getAuroraMaxLive(), 10000);
+
+    return () => {
+      clearInterval();
+    };
   }, []);
 
   return (
@@ -23,7 +25,7 @@ const AuroraMaxLive = () => {
       <div>
         <h3>AuroraMax Live</h3>
         <div className="aurora-live" style={{ marginTop: '50px' }}>
-          <img alt="" id="aurora" src={img} onLoad={refreshImg} />
+          <img alt="" id="aurora" src={img} />
         </div>
       </div>
     </>

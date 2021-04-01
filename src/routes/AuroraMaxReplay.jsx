@@ -11,10 +11,11 @@ const AuroraMaxReplay = () => {
     const now_date = moment().format('YYYY-MM-DD HH:mm:ss');
     const currentYear = now_date.substring(0, 4);
     const currentMonth = now_date.substring(5, 7);
-    const currentDay = now_date.substring(8, 10) - 2;
+    const currentDay = now_date.substring(8, 10);
 
     const lastDate = `${currentYear}-${currentMonth}-${currentDay}`;
     setLastDay(lastDate);
+    console.log(lastDay, 'lastday');
 
     const data = `https://data.phys.ucalgary.ca/sort_by_project/AuroraMAX/rt-movies/mp4/${currentYear}/${currentMonth}/${currentDay}/auroramaxHD_${currentYear}${currentMonth}${currentDay}_720p.mp4`;
 
@@ -37,8 +38,6 @@ const AuroraMaxReplay = () => {
   };
 
   useEffect(() => {
-    console.log('hi');
-
     initialVideo();
   }, []);
   return (
