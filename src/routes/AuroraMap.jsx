@@ -31,7 +31,10 @@ const AuroraMap = ({ center }) => {
           location[1] = temp;
           return [location[0], location[1], location[2]];
         })
-        .filter(coordinates => coordinates[2] > 0)
+        .filter(
+          coordinates =>
+            (coordinates[0] > 1 || coordinates[0] < -1) && coordinates[2] > 0
+        )
     );
   };
 
@@ -44,8 +47,8 @@ const AuroraMap = ({ center }) => {
   const heatmapData = {
     positions: data,
     options: {
-      radius: 60,
-      opacity: 0.6,
+      radius: 40,
+      opacity: 0.5,
     },
   };
 
