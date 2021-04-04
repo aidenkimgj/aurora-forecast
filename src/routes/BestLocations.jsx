@@ -24,6 +24,7 @@ const BestLocations = ({ center }) => {
   };
 
   const data = location.map(place => ({
+    id: place.id,
     lat: place.lat,
     lng: place.long,
     info: place.description,
@@ -48,6 +49,7 @@ const BestLocations = ({ center }) => {
         >
           {data.map(location => (
             <AnyReactComponent
+              key={location.id}
               lat={location.lat}
               lng={location.lng}
               text={location.info}
