@@ -30,7 +30,11 @@ const AppRouter = ({ isLoggedIn, location }) => {
                 exact
                 component={withProps(Home, { position: location })}
               />
-              <Route path="/bestlocations" exact component={BestLocations} />
+              <Route
+                path="/bestlocations"
+                exact
+                component={withProps(BestLocations, { center: location })}
+              />
               <Route
                 path="/auroramap"
                 exact

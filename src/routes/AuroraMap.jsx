@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
-const GOOGLE_API = process.env.REACT_APP_GOOGLE_API_KEY;
+const GOOGLE_API = process.env.REACT_APP_GOOGLE_API_KEY1;
 
 const AuroraMap = ({ center }) => {
   const [aurora, setAurora] = useState([]);
