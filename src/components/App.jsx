@@ -12,12 +12,16 @@ const App = () => {
   });
 
   const currentLocation = () => {
-    navigator.geolocation.getCurrentPosition(position => {
-      const {
-        coords: { latitude, longitude },
-      } = position;
-      setCurrLocation({ lat: latitude, lng: longitude });
-    });
+    try {
+      navigator.geolocation.getCurrentPosition(position => {
+        const {
+          coords: { latitude, longitude },
+        } = position;
+        setCurrLocation({ lat: latitude, lng: longitude });
+      });
+    } catch (error) {
+      alert("Can't find your location!");
+    }
   };
 
   useEffect(() => {
