@@ -1,0 +1,20 @@
+.weather {
+  margin-top: 40px;
+
+  .current {
+    border: solid 2px #ffffff;
+    border-radius: 10px;
+    height: 200px;
+  }
+  .hourly {
+    border: solid 2px #ffffff;
+    border-radius: 10px;
+    height: 200px;
+  }
+  .weather-daily {
+    margin-top: 20px;
+    border: solid 2px #ffffff;
+    border-radius: 10px;
+    height: 200px;
+  }
+}
