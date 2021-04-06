@@ -4,10 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { Form, Input, Label } from 'reactstrap';
 import Weather from '../components/weather/Weather';
+import { useDispatch } from 'react-redux';
+import { add } from '../store';
 
 const Home = ({ position }) => {
   const [location, setLocation] = useState(position);
   const [city, setCity] = useState('');
+  const [page, setPage] = useState('Forecast');
+  const dispatch = useDispatch();
 
   console.log('cityname ===>', city);
   const OPEN_CAGE_API = process.env.REACT_APP_OPENCAGE_API_KEY;
@@ -76,28 +80,31 @@ const Home = ({ position }) => {
 
   useEffect(() => {
     getAuroraForecast(location.lat, location.lng);
+    dispatch(add(page));
   }, [location]);
 
   return (
     <>
       <h1>Home</h1>
-
-      <Form onSubmit={onSubmit} className="col-sm-6 col-md-4 offset-md-4">
-        <div className="search">
-          <Label>
-            <b>Find Location</b>
-          </Label>
-          <FontAwesomeIcon icon={faMapMarkerAlt} className="search-icon" />
-          <Input
-            id="search"
-            name="search"
-            onChange={searchCityName}
-            placeholder={current()}
-          />
-        </div>
-      </Form>
+      <div className="search-form">
+        <Form onSubmit={onSubmit} style={{ width: '300px' }}>
+          <div className="search">
+            <Label>
+              <b>Find Location</b>
+            </Label>
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="search-icon" />
+            <Input
+              id="search"
+              name="search"
+              onChange={searchCityName}
+              placeholder={current()}
+            />
+          </div>
+        </Form>
+      </div>
       <Weather location={location} />
     </>
   );
 };
+
 export default Home;

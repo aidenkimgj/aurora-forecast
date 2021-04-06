@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 import moment from 'moment';
-import {} from 'reactstrap';
+import { useDispatch } from 'react-redux';
+import { add } from '../store';
 
 const AuroraMaxReplay = () => {
   const selectDate = useRef(null);
   const [video, setVideo] = useState(selectDate);
   const [lastDay, setLastDay] = useState('');
+  const [page, setPage] = useState('AuroraMax Replay');
+  const dispatch = useDispatch();
 
   const initialVideo = () => {
     const now_date = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -56,10 +59,11 @@ const AuroraMaxReplay = () => {
 
   useEffect(() => {
     initialVideo();
+    dispatch(add(page));
   }, []);
   return (
     <>
-      <h3>AuroraMaxReplay</h3>
+      <h3>AuroraMax Replay</h3>
       <form onChange={getDay}>
         <label
           style={{ fontWeight: 'bold', fontSize: '20px', marginTop: '30px' }}

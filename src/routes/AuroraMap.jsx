@@ -4,11 +4,15 @@ import mapStyles from '../assets/mapStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { add } from '../store';
 
 const GOOGLE_API = process.env.REACT_APP_GOOGLE_API_KEY1;
 
 const AuroraMap = ({ center }) => {
   const [aurora, setAurora] = useState([]);
+  const [page, setPage] = useState('Aurora Map');
+  const dispatch = useDispatch();
 
   const AnyReactComponent = () => (
     <FontAwesomeIcon icon={faMapMarkerAlt} size="3x" />
@@ -54,11 +58,12 @@ const AuroraMap = ({ center }) => {
 
   useEffect(() => {
     getAuroraMap();
+    dispatch(add(page));
   }, []);
 
   return (
     <>
-      <h3>AuroraMap</h3>
+      <h3>Aurora Map</h3>
 
       <div style={{ height: '70vh', width: '100%', marginTop: '50px' }}>
         <GoogleMapReact

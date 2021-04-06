@@ -3,11 +3,15 @@ import React, { useEffect, useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import mapStyles from '../assets/mapStyles';
 import AnyReactComponent from '../components/Marker';
+import { useDispatch } from 'react-redux';
+import { add } from '../store';
 
 const GOOGLE_API = process.env.REACT_APP_GOOGLE_API_KEY2;
 
 const BestLocations = ({ center }) => {
   const [location, setLocation] = useState([]);
+  const [page, setPage] = useState('Best Locations');
+  const dispatch = useDispatch();
 
   let arrayLocation = [];
 
@@ -34,11 +38,12 @@ const BestLocations = ({ center }) => {
 
   useEffect(() => {
     getBestLocations();
+    dispatch(add(page));
   }, []);
 
   return (
     <>
-      <h3>BestLocations</h3>
+      <h3>Best Locations</h3>
 
       <div style={{ height: '70vh', width: '100%', marginTop: '50px' }}>
         <GoogleMapReact
