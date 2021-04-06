@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { Form, Input, Label } from 'reactstrap';
-import Weather from '../components/Weather';
+import Weather from '../components/weather/Weather';
 
 const Home = ({ position }) => {
   const [location, setLocation] = useState(position);
@@ -24,31 +24,37 @@ const Home = ({ position }) => {
   const getCityLocation = async () => {
     console.log('city===>', city.toLowerCase());
     console.log('api ===>', OPEN_CAGE_API);
-    const location = await axios.get(
-      `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${OPEN_CAGE_API}`
-    );
+    try {
+      const location = await axios.get(
+        `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${OPEN_CAGE_API}`
+      );
 
-    console.log('location ===>', location);
+      console.log('location ===>', location);
 
-    // get city's lat, lng
-    const {
-      geometry: { lat, lng },
-    } = location.data.results.find(
-      result => result.components.city.toLowerCase() === city.toLowerCase()
-    );
+      // get city's lat, lng
+      const {
+        geometry: { lat, lng },
+      } = location.data.results.find(
+        result => result.components.city.toLowerCase() === city.toLowerCase()
+      );
 
-    setLocation({ lat: lat, lng: lng });
+      setLocation({ lat: lat, lng: lng });
+    } catch (error) {
+      alert("Can't find city at all!");
+    }
   };
 
   const getCityName = async () => {
-    const data = await axios.get(
+    const {
+      data: [{ name }],
+    } = await axios.get(
       `http://api.openweathermap.org/geo/1.0/reverse?lat=${location.lat}&lon=${location.lng}&limit=1&appid=${OPENWEATHER_API}`
     );
 
     // take City name out from data
-    const {
-      data: [{ name }],
-    } = data;
+    // const {
+    //   data: [{ name }],
+    // } = data;
 
     setCity(name);
   };
@@ -62,7 +68,7 @@ const Home = ({ position }) => {
     setCity(value);
   };
 
-  const onSubmit = async e => {
+  const onSubmit = e => {
     e.preventDefault();
     console.log('wanted city name ==>', city);
     getCityLocation();

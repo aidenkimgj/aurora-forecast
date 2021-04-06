@@ -11,9 +11,26 @@ const AuroraMaxReplay = () => {
     const now_date = moment().format('YYYY-MM-DD HH:mm:ss');
     const currentYear = now_date.substring(0, 4);
     const currentMonth = now_date.substring(5, 7);
-    const currentDay = now_date.substring(8, 10);
+    let currentDay = now_date.substring(8, 10) - 1;
+    const month = ['01', '03', '05', '07', '08', '10', '12'];
+
+    if (currentDay < 10) {
+      currentDay = `0${currentDay}`;
+    }
+
+    if (currentDay === '00') {
+      if (month.some(month => month === currentMonth)) {
+        currentDay = '31';
+      } else if (currentMonth === '02') {
+        currentDay = '28';
+        console.log('이게 나와야죠!');
+      } else {
+        currentDay = '30';
+      }
+    }
 
     const lastDate = `${currentYear}-${currentMonth}-${currentDay}`;
+    console.log(lastDate);
     setLastDay(lastDate);
     console.log(lastDay, 'lastday');
 
