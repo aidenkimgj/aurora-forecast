@@ -51,7 +51,7 @@ const Navigation = ({ isLoggedIn }) => {
               <Form className="col pr-3 p-1">
                 <NavLink>
                   <Link to="/" className="text-decoration-none">
-                    Home
+                    Forecast
                   </Link>
                 </NavLink>
               </Form>

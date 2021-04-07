@@ -7,7 +7,7 @@ import Weather from '../components/weather/Weather';
 import { useDispatch } from 'react-redux';
 import { add } from '../store';
 
-const Home = ({ position }) => {
+const Forecast = ({ position }) => {
   const [location, setLocation] = useState(position);
   const [city, setCity] = useState('');
   const [page, setPage] = useState('Forecast');
@@ -85,7 +85,7 @@ const Home = ({ position }) => {
 
   return (
     <>
-      <h1>Home</h1>
+      <h1>Forecast</h1>
       <div className="search-form">
         <Form onSubmit={onSubmit} style={{ width: '300px' }}>
           <div className="search">
@@ -107,4 +107,4 @@ const Home = ({ position }) => {
   );
 };
 
-export default Home;
+export default Forecast;

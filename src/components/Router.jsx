@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from '../routes/Home';
+import Forecast from '../routes/Forecast';
 import Auth from '../routes/Auth';
 import { Container } from 'reactstrap';
 import BestLocations from '../routes/BestLocations';
@@ -28,7 +28,7 @@ const AppRouter = ({ isLoggedIn, location }) => {
               <Route
                 path="/"
                 exact
-                component={withProps(Home, { position: location })}
+                component={withProps(Forecast, { position: location })}
               />
               <Route
                 path="/bestlocations"
