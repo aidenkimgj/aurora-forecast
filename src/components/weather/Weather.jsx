@@ -32,10 +32,10 @@ const Weather = ({ location }) => {
         <>
           <div className="weather">
             <Row className="weather-current">
-              <Col xs="6" className="current">
+              <Col className="col-md-5 current">
                 <CurrentWeather currWeather={weather.current} />
               </Col>
-              <Col xs="6" className="hourly">
+              <Col className="hourly">
                 <HourlyWeather hourlyWeather={weather.hourly} />
               </Col>
             </Row>

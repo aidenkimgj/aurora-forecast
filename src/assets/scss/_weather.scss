@@ -4,17 +4,19 @@
   .current {
     border: solid 2px #ffffff;
     border-radius: 10px;
-    height: 200px;
+    height: 400px;
   }
   .hourly {
     border: solid 2px #ffffff;
     border-radius: 10px;
-    height: 200px;
+    height: 400px;
+    margin-left: 20px;
   }
   .weather-daily {
     margin-top: 20px;
+    margin-bottom: 20px;
     border: solid 2px #ffffff;
     border-radius: 10px;
-    height: 200px;
+    height: 300px;
   }
 }

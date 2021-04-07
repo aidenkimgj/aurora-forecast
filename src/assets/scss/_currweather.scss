@@ -1,0 +1,34 @@
+.curr-weather {
+  margin-top: 30px;
+
+  .curr-icon {
+    padding: 0px;
+    padding-left: 160px;
+  }
+
+  .curr-temp {
+    padding: 0px;
+    padding-right: 150px;
+
+    font-weight: normal;
+    font-size: 32px;
+    color: white;
+  }
+
+  .curr-description {
+    margin-top: 20px;
+    color: #343a40;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .curr-info {
+    margin-top: 40px;
+    color: rgb(175, 170, 170);
+
+    .col-right {
+      text-align: right;
+      font-weight: bold;
+    }
+  }
+}
