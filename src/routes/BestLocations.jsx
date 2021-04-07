@@ -47,7 +47,7 @@ const BestLocations = ({ center }) => {
 
       <div style={{ height: '70vh', width: '100%', marginTop: '50px' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: GOOGLE_API }}
+          bootstrapURLKeys={{ key: GOOGLE_API, libraries: ['visualization'] }}
           defaultCenter={center}
           defaultZoom={1}
           options={mapStyles}
