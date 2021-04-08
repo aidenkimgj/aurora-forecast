@@ -16,6 +16,10 @@ import {
   WiSmoke,
 } from 'weather-icons-react';
 
+const timeNow = new Date();
+const utc = timeNow.getTime() + timeNow.getTimezoneOffset() * 60 * 1000;
+console.log('utc', utc);
+
 const weatherName = {
   Thunderstorm: <WiDaySnowThunderstorm size={70} color="white" />,
   Drizzle: <WiDayRainMix size={70} color="white" />,
@@ -32,7 +36,7 @@ const weatherName = {
   Clouds: <WiCloudy size={70} color="white" />,
 };
 
-const CurrentWeather = ({ currWeather }) => {
+const CurrentWeather = ({ currWeather, offset }) => {
   const [sunrise, setSunrise] = useState(new Date(currWeather.sunrise * 1000));
   const [sunset, setSunset] = useState(new Date(currWeather.sunset * 1000));
   const [localTime, setLocalTime] = useState(new Date(currWeather.dt * 1000));
@@ -47,7 +51,7 @@ const CurrentWeather = ({ currWeather }) => {
   const refresh = () => {
     setSunrise(new Date(currWeather.sunrise * 1000));
     setSunset(new Date(currWeather.sunset * 1000));
-    setLocalTime(new Date(currWeather.dt * 1000));
+    setLocalTime(new Date(utc + offset));
     setClouds(currWeather.clouds);
     setWindChill(currWeather.feels_like);
     setHumidity(currWeather.humidity);
@@ -124,10 +128,11 @@ const CurrentWeather = ({ currWeather }) => {
         </Row>
         <Row>
           <Col className="curr-description">
-            Local Time {moment().format('YYYY MMM DD')} {localTime.getHours()}:
+            {/* Local Time {moment().format('YYYY MMM DD')} {localTime.getHours()}:
             {localTime.getMinutes() < 10
               ? `0${localTime.getMinutes()}`
-              : localTime.getMinutes()}
+              : localTime.getMinutes()} */}
+            Local Time {localTime.getHours()}
           </Col>
         </Row>
       </div>

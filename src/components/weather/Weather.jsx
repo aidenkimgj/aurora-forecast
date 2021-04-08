@@ -33,7 +33,10 @@ const Weather = ({ location }) => {
           <div className="weather">
             <Row className="weather-current">
               <Col className="col-md-5 current">
-                <CurrentWeather currWeather={weather.current} />
+                <CurrentWeather
+                  currWeather={weather.current}
+                  offset={weather.timezone_offset}
+                />
               </Col>
               <Col className="hourly">
                 <HourlyWeather hourlyWeather={weather.hourly} />
