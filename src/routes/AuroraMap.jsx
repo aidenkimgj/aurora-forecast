@@ -11,7 +11,7 @@ const GOOGLE_API = process.env.REACT_APP_GOOGLE_API_KEY1;
 
 const AuroraMap = ({ center }) => {
   const [aurora, setAurora] = useState([]);
-  const [page, setPage] = useState('Aurora Map');
+  const page = 'Aurora Map';
   const dispatch = useDispatch();
 
   const AnyReactComponent = () => (

@@ -10,7 +10,7 @@ const GOOGLE_API = process.env.REACT_APP_GOOGLE_API_KEY2;
 
 const BestLocations = ({ center }) => {
   const [location, setLocation] = useState([]);
-  const [page, setPage] = useState('Best Locations');
+  const page = 'Best Locations';
   const dispatch = useDispatch();
 
   let arrayLocation = [];

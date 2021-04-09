@@ -78,10 +78,15 @@ const Navigation = ({ isLoggedIn }) => {
               <Form className="col pr-3 p-1">
                 <div className="drop-menu">
                   <Dropdown nav isOpen={dropdownOpen}>
-                    <DropdownToggle nav caret onMouseEnter={mouseOn}>
+                    <DropdownToggle
+                      nav
+                      caret
+                      onMouseEnter={mouseOn}
+                      onMouseLeave={mouseOn}
+                    >
                       Observatory
                     </DropdownToggle>
-                    <DropdownMenu onMouseLeave={mouseOn}>
+                    <DropdownMenu onMouseEnter={mouseOn} onMouseLeave={mouseOn}>
                       <DropdownItem>
                         <Link to="/live" className="text-decoration-none">
                           AuroraMax Live

@@ -7,7 +7,7 @@ const AuroraMaxReplay = () => {
   const selectDate = useRef(null);
   const [video, setVideo] = useState(selectDate);
   const [lastDay, setLastDay] = useState('');
-  const [page, setPage] = useState('AuroraMax Replay');
+  const page = 'AuroraMax Replay';
   const dispatch = useDispatch();
 
   const initialVideo = () => {

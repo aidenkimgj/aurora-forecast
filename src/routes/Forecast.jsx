@@ -10,9 +10,8 @@ import { add } from '../store';
 const Forecast = ({ position }) => {
   const [location, setLocation] = useState(position);
   const [city, setCity] = useState('');
-  const [page, setPage] = useState('Forecast');
+  const page = 'Forecast';
   const dispatch = useDispatch();
-
   console.log('cityname ===>', city);
   const OPEN_CAGE_API = process.env.REACT_APP_OPENCAGE_API_KEY;
   const OPENWEATHER_API = process.env.REACT_APP_OPENWEATHER_API_KEY;

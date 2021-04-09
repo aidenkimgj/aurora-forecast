@@ -6,7 +6,7 @@ const AuroraMaxLive = () => {
   const [img, setImage] = useState(
     `https://auroramax.phys.ucalgary.ca/recent/recent_720p.jpg?${new Date().getTime()}`
   );
-  const [page, setPage] = useState('AuroraMax Live');
+  const page = 'AuroraMax Live';
   const dispatch = useDispatch();
   console.log(img, 'image');
 
