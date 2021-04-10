@@ -18,7 +18,9 @@ import {
 
 const timeNow = new Date();
 const utc = timeNow.getTime() + timeNow.getTimezoneOffset() * 60 * 1000;
-console.log('utc', utc);
+console.log(utc);
+console.log('utc', utc / 1000);
+console.log(new Date(utc));
 
 const weatherName = {
   Thunderstorm: <WiDaySnowThunderstorm size={70} color="white" />,
@@ -46,18 +48,30 @@ const CurrentWeather = ({ currWeather, offset }) => {
   const [pressure, setPressure] = useState(currWeather.pressure);
   const [temp, setTemp] = useState(currWeather.temp);
   const [weather, setWeather] = useState(currWeather.weather);
-  console.log('currentweather', currWeather.rain);
+
+  console.log('offset ====>', offset);
 
   const refresh = () => {
-    setSunrise(new Date(currWeather.sunrise * 1000));
-    setSunset(new Date(currWeather.sunset * 1000));
-    setLocalTime(new Date(utc + offset));
+    setSunrise(
+      new Date(utc + (offset + currWeather.sunrise - currWeather.dt) * 1000)
+    );
+    setSunset(
+      new Date(utc + (offset + currWeather.sunset - currWeather.dt) * 1000)
+    );
+    setLocalTime(new Date(utc + offset * 1000));
     setClouds(currWeather.clouds);
     setWindChill(currWeather.feels_like);
     setHumidity(currWeather.humidity);
     setPressure(currWeather.pressure);
     setTemp(currWeather.temp);
     setWeather(currWeather.weather);
+  };
+
+  const description = () => {
+    const exp = weather[0].description;
+    const firstLetter = exp.substring(0, 1);
+    const restLetter = exp.substring(1);
+    return `${firstLetter.toUpperCase()}${restLetter}`;
   };
 
   useEffect(() => {
@@ -72,7 +86,7 @@ const CurrentWeather = ({ currWeather, offset }) => {
           <Col className="curr-temp">{Math.round(temp)}°c</Col>
         </Row>
         <Row>
-          <Col className="curr-description">{weather[0].description}</Col>
+          <Col className="curr-description">{description()}</Col>
         </Row>
         <Row className="curr-info">
           <Col>
@@ -128,11 +142,11 @@ const CurrentWeather = ({ currWeather, offset }) => {
         </Row>
         <Row>
           <Col className="curr-description">
-            {/* Local Time {moment().format('YYYY MMM DD')} {localTime.getHours()}:
+            Local Time {moment().format('YYYY MMM')}
+            &nbsp;{localTime.getDate()} {localTime.getHours()}:
             {localTime.getMinutes() < 10
               ? `0${localTime.getMinutes()}`
-              : localTime.getMinutes()} */}
-            Local Time {localTime.getHours()}
+              : localTime.getMinutes()}
           </Col>
         </Row>
       </div>
