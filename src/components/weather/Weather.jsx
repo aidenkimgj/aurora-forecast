@@ -5,7 +5,7 @@ import CurrentWeather from './CurrentWeather';
 import DailyWeather from './DailyWeather';
 import HourlyWeather from './HourlyWeather';
 
-const Weather = ({ location }) => {
+const Weather = React.memo(({ location }) => {
   const [weather, setWeather] = useState();
   const OPENWEATHER_API = process.env.REACT_APP_OPENWEATHER_API_KEY;
   console.log(location, '날씨 컴포넌트');
@@ -54,6 +54,6 @@ const Weather = ({ location }) => {
       )}
     </>
   );
-};
+});
 
 export default Weather;

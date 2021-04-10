@@ -7,7 +7,7 @@ import Weather from '../components/weather/Weather';
 import { useDispatch } from 'react-redux';
 import { add } from '../store';
 
-const Forecast = ({ position }) => {
+const Forecast = React.memo(({ position }) => {
   const [location, setLocation] = useState(position);
   const [city, setCity] = useState('');
   const page = 'Forecast';
@@ -104,6 +104,6 @@ const Forecast = ({ position }) => {
       <Weather location={location} />
     </>
   );
-};
+});
 
 export default Forecast;
