@@ -8,18 +8,37 @@
   position: relative;
   white-space: nowrap;
 
-  // left: 15%;
-  // width: 500px;
-
   #search {
     border: none;
+    border-radius: 20px;
     padding-left: 40px;
     padding-bottom: 10px;
+    box-shadow: none;
   }
   .search-icon {
     position: absolute;
     top: 60%;
     left: 15px;
     color: #4f5b66;
+  }
+}
+
+.search-button {
+  position: relative;
+  left: 76%;
+  bottom: 39.5%;
+  border-radius: 20px;
+  background-color: #10c0a6;
+  border: 1px solid #10c0a6;
+  &:hover {
+    background-color: #00a389;
+    border: 1px solid #00a389;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: #10c0a6;
+    border: 1px solid #10c0a6;
   }
 }

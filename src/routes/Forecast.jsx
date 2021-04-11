@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import { Form, Input, Label } from 'reactstrap';
+import { Button, Form, Input, Label } from 'reactstrap';
 import Weather from '../components/weather/Weather';
 import { useDispatch } from 'react-redux';
 import { add } from '../store';
@@ -10,6 +10,7 @@ import { add } from '../store';
 const Forecast = React.memo(({ position }) => {
   const [location, setLocation] = useState(position);
   const [city, setCity] = useState('');
+  const resetValue = useRef(null);
   const page = 'Forecast';
   const dispatch = useDispatch();
   console.log('cityname ===>', city);
@@ -62,8 +63,6 @@ const Forecast = React.memo(({ position }) => {
     setCity(name);
   };
 
-  const current = () => `Current location is ${city}`;
-
   const searchCityName = e => {
     const {
       target: { value },
@@ -75,6 +74,7 @@ const Forecast = React.memo(({ position }) => {
     e.preventDefault();
     console.log('wanted city name ==>', city);
     getCityLocation();
+    resetValue.current.value = '';
   };
 
   useEffect(() => {
@@ -96,9 +96,12 @@ const Forecast = React.memo(({ position }) => {
               id="search"
               name="search"
               onChange={searchCityName}
-              placeholder={current()}
+              placeholder={city}
+              innerRef={resetValue}
             />
           </div>
+
+          <Button className="search-button">Search</Button>
         </Form>
       </div>
       <Weather location={location} />
