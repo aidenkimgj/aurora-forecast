@@ -4,8 +4,7 @@ import { useDispatch } from 'react-redux';
 import { add } from '../store';
 
 const AuroraMaxReplay = () => {
-  const selectDate = useRef(null);
-  const [video, setVideo] = useState(selectDate);
+  const [video, setVideo] = useState('');
   const [lastDay, setLastDay] = useState('');
   const page = 'AuroraMax Replay';
   const dispatch = useDispatch();
@@ -26,7 +25,6 @@ const AuroraMaxReplay = () => {
         currentDay = '31';
       } else if (currentMonth === '02') {
         currentDay = '28';
-        console.log('이게 나와야죠!');
       } else {
         currentDay = '30';
       }
@@ -54,7 +52,6 @@ const AuroraMaxReplay = () => {
   const getVideo = (year, month, day) => {
     const data = `https://data.phys.ucalgary.ca/sort_by_project/AuroraMAX/rt-movies/mp4/${year}/${month}/${day}/auroramaxHD_${year}${month}${day}_720p.mp4`;
     setVideo(data);
-    selectDate.current = data;
   };
 
   useEffect(() => {
