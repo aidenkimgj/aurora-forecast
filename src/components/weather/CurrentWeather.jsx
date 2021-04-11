@@ -142,8 +142,9 @@ const CurrentWeather = ({ currWeather, offset }) => {
         </Row>
         <Row>
           <Col className="curr-description">
-            Local Time {moment().format('YYYY MMM')}
-            &nbsp;{localTime.getDate()} {localTime.getHours()}:
+            <Label>Local Time : </Label> {moment().format('MMM')}
+            &nbsp;{localTime.getDate()} &nbsp;{localTime.getFullYear()}{' '}
+            {localTime.getHours()}:
             {localTime.getMinutes() < 10
               ? `0${localTime.getMinutes()}`
               : localTime.getMinutes()}
