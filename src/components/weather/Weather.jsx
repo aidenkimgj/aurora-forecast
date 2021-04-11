@@ -7,6 +7,7 @@ import HourlyWeather from './HourlyWeather';
 
 const Weather = React.memo(({ location }) => {
   const [weather, setWeather] = useState();
+  const [utc, setUTC] = useState();
   const OPENWEATHER_API = process.env.REACT_APP_OPENWEATHER_API_KEY;
   console.log(location, '날씨 컴포넌트');
 
@@ -14,10 +15,14 @@ const Weather = React.memo(({ location }) => {
     const data = await axios.get(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lng}&exclude=minutely&units=metric&appid=${OPENWEATHER_API}`
     );
-    console.log('시간 ===>', new Date(data.data.current.dt * 1000));
-    console.log('날씨 데이터 ====>', data);
-
+    getUTCTime();
     setWeather(data.data);
+  };
+
+  const getUTCTime = () => {
+    const timeNow = new Date();
+    const utcTime = timeNow.getTime() + timeNow.getTimezoneOffset() * 60 * 1000;
+    setUTC(utcTime);
   };
 
   console.log('state의 날씨 ==>', weather);
@@ -36,10 +41,15 @@ const Weather = React.memo(({ location }) => {
                 <CurrentWeather
                   currWeather={weather.current}
                   offset={weather.timezone_offset}
+                  utc={utc}
                 />
               </Col>
               <Col className="hourly">
-                <HourlyWeather hourlyWeather={weather.hourly} />
+                <HourlyWeather
+                  hourlyWeather={weather.hourly}
+                  offset={weather.timezone_offset}
+                  utc={utc}
+                />
               </Col>
             </Row>
             <Row className="weather-daily">
