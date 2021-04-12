@@ -1,0 +1,39 @@
+.hourly-time {
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: $info;
+}
+
+#hourly-icon {
+  text-align: center;
+}
+
+.hourly-temp {
+  width: 100px;
+  padding: 0px;
+  font-weight: normal;
+  font-size: 30px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.hourly-windchill {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: $info;
+}
+
+.hourly-description {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: $info;
+}
