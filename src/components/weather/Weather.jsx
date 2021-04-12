@@ -2,8 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'reactstrap';
 import CurrentWeather from './CurrentWeather';
-import DailyWeather from './DailyWeather';
-import HourlyWeather from './HourlyWeather';
+import DailyWeather from './daily/DailyWeather';
+import HourlyWeather from './hourly/HourlyWeather';
 
 const Weather = React.memo(({ location }) => {
   const [weather, setWeather] = useState();
@@ -47,6 +47,8 @@ const Weather = React.memo(({ location }) => {
               <Col className="hourly">
                 <HourlyWeather
                   hourlyWeather={weather.hourly}
+                  sunrise={weather.current.sunrise}
+                  sunset={weather.current.sunset}
                   offset={weather.timezone_offset}
                   utc={utc}
                 />
