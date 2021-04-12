@@ -75,7 +75,10 @@ const CurrentWeather = ({ currWeather, offset, utc }) => {
                 <Label>Sunrise</Label>
               </Col>
               <Col className="col-right">
-                {sunrise.getHours()}:
+                {sunrise.getHours() < 10
+                  ? `0${sunrise.getHours()}`
+                  : sunrise.getHours()}
+                :
                 {sunrise.getMinutes() < 10
                   ? `0${sunrise.getMinutes()}`
                   : sunrise.getMinutes()}
@@ -109,10 +112,13 @@ const CurrentWeather = ({ currWeather, offset, utc }) => {
           </Col>
         </Row>
         <Row>
-          <Col className="curr-description">
+          <Col className="curr-local">
             <Label>Local Time : </Label> {moment().format('MMM')}
             &nbsp;{localTime.getDate()}&nbsp;{localTime.getFullYear()} &nbsp;
-            {localTime.getHours()}:
+            {localTime.getHours() < 10
+              ? `0${localTime.getHours()}`
+              : localTime.getHours()}
+            :
             {localTime.getMinutes() < 10
               ? `0${localTime.getMinutes()}`
               : localTime.getMinutes()}
