@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'reactstrap';
 import HourlyWeatherDetail from './HourlyWeatherDetail';
 
-const HourlyWeather = ({ hourlyWeather, sunrise, sunset, offset, utc }) => {
+const HourlyWeather = ({ hourlyWeather, sunrise, sunset, offset }) => {
   const [weather, setWeather] = useState([]);
 
   const nextFiveHours = () => {
@@ -12,8 +12,6 @@ const HourlyWeather = ({ hourlyWeather, sunrise, sunset, offset, utc }) => {
     }
     setWeather(arr);
   };
-
-  console.log('hourly weather ---->', weather);
 
   useEffect(() => {
     nextFiveHours();
@@ -29,7 +27,6 @@ const HourlyWeather = ({ hourlyWeather, sunrise, sunset, offset, utc }) => {
           sunrise={sunrise}
           sunset={sunset}
           offset={offset}
-          utc={utc}
         />
       ))}
     </>

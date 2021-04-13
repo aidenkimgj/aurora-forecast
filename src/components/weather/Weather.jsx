@@ -50,13 +50,16 @@ const Weather = React.memo(({ location }) => {
                   sunrise={weather.current.sunrise}
                   sunset={weather.current.sunset}
                   offset={weather.timezone_offset}
-                  utc={utc}
                 />
               </Col>
             </Row>
             <Row className="weather-daily">
               <Col>
-                <DailyWeather dailyWeather={weather.daily} />
+                <DailyWeather
+                  dailyWeather={weather.daily}
+                  offset={weather.timezone_offset}
+                  utc={utc}
+                />
               </Col>
             </Row>
           </div>

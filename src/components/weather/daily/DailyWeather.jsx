@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DailyWeather = ({ dailyWeather }) => {
+const DailyWeather = ({ dailyWeather, offset, utc }) => {
   // const [sunrise, setSunrise] = useState(new Date(currWeather.sunrise * 1000));
   // const [sunset, setSunset] = useState(new Date(currWeather.sunset * 1000));
   // const [localTime, setLocalTime] = useState(new Date(currWeather.dt * 1000));

@@ -1,9 +1,8 @@
-import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'reactstrap';
 import { weatherIconDay, weatherIconNight } from '../WeatherIcons';
 
-const HourlyWeatherDetail = ({ weather, sunrise, sunset, offset, utc }) => {
+const HourlyWeatherDetail = ({ weather, sunrise, sunset, offset }) => {
   const [hweather, setHWeather] = useState(weather.weather[0]);
 
   const description = () => {
