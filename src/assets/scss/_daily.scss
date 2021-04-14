@@ -1,0 +1,35 @@
+.daily-weather {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding-top: 2%;
+
+  .daily-date {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    color: $info;
+  }
+
+  .daily-icon {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .daily-detail {
+    color: $info;
+
+    .daily-temp {
+      display: flex;
+      justify-content: center;
+      font-weight: bold;
+      color: white;
+    }
+    .daily-description {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

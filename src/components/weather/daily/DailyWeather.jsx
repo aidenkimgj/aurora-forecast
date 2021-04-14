@@ -1,19 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Col, Row } from 'reactstrap';
+import DailyWeatherDetail from './DailyWeatherDetail';
 
-const DailyWeather = ({ dailyWeather }) => {
-  // const [sunrise, setSunrise] = useState(new Date(currWeather.sunrise * 1000));
-  // const [sunset, setSunset] = useState(new Date(currWeather.sunset * 1000));
-  // const [localTime, setLocalTime] = useState(new Date(currWeather.dt * 1000));
-  // const [clouds, setClouds] = useState(currWeather.clouds);
-  // const [windChill, setWindChill] = useState(currWeather.feels_like);
-  // const [humidity, setHumidity] = useState(currWeather.humidity);
-  // const [pressure, setPressure] = useState(currWeather.pressure);
-  // const [temp, setTemp] = useState(currWeather.temp);
-  // const [weather, setWeather] = useState(currWeather.weather);
+const DailyWeather = ({ dailyWeather, offset, utc }) => {
+  const [weather, setWeather] = useState([]);
 
+  const nextSevenDays = () => {
+    let arr = [];
+    for (let i = 1; i < dailyWeather.length; i++) {
+      arr = [...arr, dailyWeather[i]];
+    }
+    setWeather(arr);
+  };
+
+  useEffect(() => {
+    nextSevenDays();
+  }, [dailyWeather]);
   return (
     <>
-      <h3>Daily Weather</h3>
+      <h3>7 Days Weather</h3>
+      <Row>
+        {weather.map(detail => (
+          <Col className="daily-weather">
+            <DailyWeatherDetail
+              key={detail.dt}
+              daily={detail}
+              offset={offset}
+            />
+          </Col>
+        ))}
+      </Row>
     </>
   );
 };
