@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col } from 'reactstrap';
 import HourlyWeatherDetail from './HourlyWeatherDetail';
 
 const HourlyWeather = ({ hourlyWeather, sunrise, sunset, offset }) => {

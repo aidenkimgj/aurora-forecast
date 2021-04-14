@@ -7,9 +7,14 @@
 @import './weather';
 @import './current';
 @import './hourly';
+@import './daily';
 
 #main-body {
   min-height: 93vh;
+
+  h3 {
+    margin-top: 10px;
+  }
 }
 
 #page-header {
