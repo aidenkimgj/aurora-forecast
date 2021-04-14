@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  padding-top: 3%;
+  padding-top: 2%;
 
   .daily-date {
     display: flex;
@@ -13,6 +13,7 @@
   }
 
   .daily-icon {
+    padding-top: 10px;
     display: flex;
     justify-content: center;
   }

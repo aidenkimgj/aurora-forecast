@@ -30,6 +30,15 @@ const DailyWeatherDetail = ({ daily, offset }) => {
             )}
           </Row>
         </div>
+        <div className="daily-date">
+          <Row>
+            {dateFormat(
+              new Date((weather.dt + offset + timezone_offset) * 1000),
+              'mmm d'
+            )}
+          </Row>
+        </div>
+
         <div className="daily-icon">
           <Row>{weatherIconDay[weather.weather[0].main]}</Row>
         </div>
@@ -42,14 +51,6 @@ const DailyWeatherDetail = ({ daily, offset }) => {
           </div>
           <div className="daily-description">
             <Row>{description()}</Row>
-          </div>
-          <div className="daily-date">
-            <Row>
-              {dateFormat(
-                new Date((weather.dt + offset + timezone_offset) * 1000),
-                'mmm d yyyy'
-              )}
-            </Row>
           </div>
         </div>
       </div>
