@@ -6,6 +6,7 @@ import { Button, Form, Input, Label } from 'reactstrap';
 import Weather from '../components/weather/Weather';
 import { useDispatch } from 'react-redux';
 import { add } from '../store';
+import Aurora from '../components/aurora/Aurora';
 
 const Forecast = React.memo(({ position }) => {
   const [location, setLocation] = useState(position);
@@ -84,7 +85,6 @@ const Forecast = React.memo(({ position }) => {
 
   return (
     <>
-      <h1>Forecast</h1>
       <div className="search-form">
         <Form onSubmit={onSubmit} style={{ width: '300px' }}>
           <div className="search">
@@ -104,7 +104,10 @@ const Forecast = React.memo(({ position }) => {
           <Button className="search-button">Search</Button>
         </Form>
       </div>
+      <h1>Weather Forecast</h1>
       <Weather location={location} />
+      <h1>Aurora Forecast</h1>
+      <Aurora />
     </>
   );
 });

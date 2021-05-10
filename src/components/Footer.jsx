@@ -14,7 +14,7 @@ const Footer = () => {
           <p>
             Copyright &copy; <span>{thisYear()}</span> Aurora World
           </p>
-          <p>Powered by Auroras.live, OpenWeather</p>
+          <p>Powered by Auroras.live, AuroraMax, OpenWeather</p>
         </Col>
       </Row>
     </div>
