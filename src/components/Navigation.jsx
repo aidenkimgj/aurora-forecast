@@ -128,6 +128,8 @@ const Navigation = ({ isLoggedIn }) => {
 
 export default Navigation;
 
-<Link to="/auroramax" className="text-decoration-none">
+{
+  /* <Link to="/auroramax" className="text-decoration-none">
   AuroraMax
-</Link>;
+</Link>; */
+}
