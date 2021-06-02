@@ -3,7 +3,7 @@ import { Row } from 'reactstrap';
 import { weatherIconDay } from '../WeatherIcons';
 import dateFormat from 'dateformat';
 
-const DailyWeatherDetail = ({ daily, offset }) => {
+const DailyWeatherDetail = React.memo(({ daily, offset }) => {
   console.log('info===>', daily);
   const [weather, setWeather] = useState(daily);
 
@@ -56,6 +56,6 @@ const DailyWeatherDetail = ({ daily, offset }) => {
       </div>
     </>
   );
-};
+});
 
 export default DailyWeatherDetail;

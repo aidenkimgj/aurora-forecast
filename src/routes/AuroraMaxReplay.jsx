@@ -38,6 +38,14 @@ const AuroraMaxReplay = () => {
     const data = `https://data.phys.ucalgary.ca/sort_by_project/AuroraMAX/rt-movies/mp4/${currentYear}/${currentMonth}/${currentDay}/auroramaxHD_${currentYear}${currentMonth}${currentDay}_720p.mp4`;
 
     setVideo(data);
+
+    if (
+      currentMonth === '05' ||
+      currentMonth === '06' ||
+      currentMonth === '07'
+    ) {
+      alert('There is no video in May, June, July');
+    }
   };
 
   const getDay = e => {
@@ -71,7 +79,7 @@ const AuroraMaxReplay = () => {
       </form>
       <div className="video-detail col-md-12 mt-5 pb-5">
         <div className="embed-responsive embed-responsive-16by9">
-          <iframe className="embed-responsive-item" src={video} />
+          <iframe className="embed-responsive-item" id="video" src={video} />
         </div>
       </div>
     </>

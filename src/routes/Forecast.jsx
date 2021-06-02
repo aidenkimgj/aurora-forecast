@@ -11,20 +11,13 @@ import Aurora from '../components/aurora/Aurora';
 const Forecast = React.memo(({ position }) => {
   const [location, setLocation] = useState(position);
   const [city, setCity] = useState('');
+
   const resetValue = useRef(null);
   const page = 'Forecast';
   const dispatch = useDispatch();
   console.log('cityname ===>', city);
   const OPEN_CAGE_API = process.env.REACT_APP_OPENCAGE_API_KEY;
   const OPENWEATHER_API = process.env.REACT_APP_OPENWEATHER_API_KEY;
-
-  const getAuroraForecast = async (latitude, longitude) => {
-    const data = await axios.get(
-      `https://api.auroras.live/v1/?type=ace&lat=${latitude}&long=${longitude}&data=all`
-    );
-    console.log('오로라 데이터', data);
-    getCityName();
-  };
 
   const getCityLocation = async () => {
     console.log('city===>', city.toLowerCase());
@@ -79,7 +72,8 @@ const Forecast = React.memo(({ position }) => {
   };
 
   useEffect(() => {
-    getAuroraForecast(location.lat, location.lng);
+    // getAuroraForecast(location.lat, location.lng);
+    getCityName();
     dispatch(add(page));
   }, [location]);
 
@@ -107,7 +101,7 @@ const Forecast = React.memo(({ position }) => {
       <h1>Weather Forecast</h1>
       <Weather location={location} />
       <h1>Aurora Forecast</h1>
-      <Aurora />
+      <Aurora location={location} />
     </>
   );
 });

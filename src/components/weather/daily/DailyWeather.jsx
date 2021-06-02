@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'reactstrap';
 import DailyWeatherDetail from './DailyWeatherDetail';
 
-const DailyWeather = ({ dailyWeather, offset, utc }) => {
+const DailyWeather = React.memo(({ dailyWeather, offset }) => {
   const [weather, setWeather] = useState([]);
 
   const nextSevenDays = () => {
@@ -11,6 +11,7 @@ const DailyWeather = ({ dailyWeather, offset, utc }) => {
       arr = [...arr, dailyWeather[i]];
     }
     setWeather(arr);
+    console.log(weather, '설정된 데일리');
   };
 
   useEffect(() => {
@@ -32,6 +33,6 @@ const DailyWeather = ({ dailyWeather, offset, utc }) => {
       </Row>
     </>
   );
-};
+});
 
 export default DailyWeather;
