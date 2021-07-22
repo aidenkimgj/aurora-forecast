@@ -1,6 +1,7 @@
 .weather {
-  margin-top: 40px;
-
+  h1 {
+    margin-bottom: 40px;
+  }
   .current {
     // border: solid 2px $weather-border;
     border-radius: 10px;

@@ -36,6 +36,7 @@ const Weather = React.memo(({ location }) => {
       {weather ? (
         <>
           <div className="weather">
+            <h1>Weather Forecast</h1>
             <Row className="weather-current">
               <Col className="col-md-5 current">
                 <CurrentWeather

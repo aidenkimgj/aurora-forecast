@@ -98,9 +98,9 @@ const Forecast = React.memo(({ position }) => {
           <Button className="search-button">Search</Button>
         </Form>
       </div>
-      <h1>Weather Forecast</h1>
+
       <Weather location={location} />
-      <h1>Aurora Forecast</h1>
+
       <Aurora location={location} />
     </>
   );
