@@ -8,6 +8,7 @@ import HourlyWeather from './hourly/HourlyWeather';
 const Weather = React.memo(({ location }) => {
   const [weather, setWeather] = useState();
   const [utc, setUTC] = useState();
+
   const OPENWEATHER_API = process.env.REACT_APP_OPENWEATHER_API_KEY;
   console.log(location, '날씨 컴포넌트');
 
@@ -59,6 +60,7 @@ const Weather = React.memo(({ location }) => {
                 <DailyWeather
                   dailyWeather={weather.daily}
                   offset={weather.timezone_offset}
+                  timezone={weather.timezone}
                   utc={utc}
                 />
               </Col>
