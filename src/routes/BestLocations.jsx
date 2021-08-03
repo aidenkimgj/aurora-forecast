@@ -19,8 +19,8 @@ const BestLocations = ({ center }) => {
     const locations = await axios.get(
       'https://api.auroras.live/v1/?type=locations'
     );
-    console.log(locations.data);
-    for (let i = 0; i < 17; i++) {
+
+    for (let i = 0; i < Object.keys(locations.data).length - 1; i++) {
       arrayLocation = [...arrayLocation, locations.data[i]];
     }
 

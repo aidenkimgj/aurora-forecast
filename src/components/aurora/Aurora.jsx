@@ -3,16 +3,23 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Col, Row } from 'reactstrap';
 import ReactSpeedometer from 'react-d3-speedometer';
+import { useSelector } from 'react-redux';
+import dateFormat from 'dateformat';
+import GenerateTime from './GenerateTime';
 
 const Aurora = React.memo(({ location }) => {
   const [info, setInfo] = useState('');
   const [probability, setProbability] = useState('');
-  const [firstday, setFirstday] = useState();
-  const [secondDay, setSecondDay] = useState();
-  const [thirdDay, setThirdDay] = useState();
-  const [middleLatitude, setMiddleLatitude] = useState();
-  const [highLatitude, setHighLatitude] = useState();
+  const [firstday, setFirstday] = useState([]);
+  const [secondDay, setSecondDay] = useState([]);
+  const [thirdDay, setThirdDay] = useState([]);
+  const [threedays, setThreeDays] = useState([]);
+  const [middleLatitude, setMiddleLatitude] = useState([]);
+  const [highLatitude, setHighLatitude] = useState([]);
+  // const offset = useSelector(state => state.offset);
 
+  // console.log(offset, 'Redux');
+  // console.log(utc, 'utcRedux');
   const getAuroraForecast = async (latitude, longitude) => {
     console.log(location.lat, 'lati');
     console.log(longitude, 'long');
@@ -29,9 +36,9 @@ const Aurora = React.memo(({ location }) => {
     } = await axios.get(
       `https://api.auroras.live/v1/?type=ace&lat=${latitude}&long=${longitude}&data=probability`
     );
-    console.log('data all', data);
-    console.log('data threeday', values);
-    console.log('data probability', calculated);
+    // console.log('data all', data);
+    // console.log('data threeday', values);
+    // console.log('data probability', calculated);
     setInfo(data);
     setProbability(calculated);
     getThreeday(values);
@@ -39,6 +46,29 @@ const Aurora = React.memo(({ location }) => {
   };
 
   const getThreeday = threeday => {
+    // let arr;
+
+    // threeday.forEach((element, index) => {
+    //   switch (index) {
+    //     case 0:
+    //       arr = element;
+    //       break;
+    //     case 1:
+    //       element.forEach(e => {
+    //         arr = [...arr, e];
+    //       });
+    //       break;
+    //     case 2:
+    //       element.map(e => (arr = [...arr, e]));
+
+    //       break;
+    //     default:
+    //       throw new Error('Something is Wrong!');
+    //   }
+    // });
+
+    // setThreeDays(arr);
+
     let arr0;
     let arr1;
     let arr2;
@@ -59,22 +89,6 @@ const Aurora = React.memo(({ location }) => {
       }
     });
 
-    //  for (let i = 0; i < threeday.length; i++) {
-    //   switch (i) {
-    //     case 0:
-    //       arr0 = threeday[i];
-    //       break;
-    //     case 1:
-    //       arr1 = threeday[i];
-    //       break;
-    //     case 2:
-    //       arr2 = threeday[i];
-    //       break;
-    //     default:
-    //       new Error('Something Wrong');
-    //   }
-    // }
-
     setFirstday(arr0);
     setSecondDay(arr1);
     setThirdDay(arr2);
@@ -82,6 +96,18 @@ const Aurora = React.memo(({ location }) => {
     console.log('arr1', arr1);
     console.log('arr2', arr2);
   };
+
+  // const generateTime = time => {
+  //   const basicTime = new Date(time.start);
+  //   const stadardOffset = basicTime.getTimezoneOffset() * 60 * 1000;
+  //   const utc = Date.parse(time.start) + stadardOffset;
+
+  //   console.log(new Date(utc), 'utc 시간');
+
+  //   console.log(new Date(utc + offset * 1000), '현지시간');
+  //   console.log(dateFormat(new Date(utc), 'mmm d yyyy'), 'Date format');
+  //   return <div>{dateFormat(new Date(utc), 'mmm d yyyy')}</div>;
+  // };
 
   const getHighestNowcast = async () => {
     const data = await axios.get(
@@ -138,7 +164,9 @@ const Aurora = React.memo(({ location }) => {
                 minValue={0}
                 customSegmentStops={[0, 4, 10, 15, 20]}
                 segmentColors={['#6AD72D', '#ECDB23', '#F6961E', '#FF471A']}
-                value={parseFloat(info.density)}
+                value={
+                  parseFloat(info.density) > 20 ? 20 : parseFloat(info.density)
+                }
                 width={250}
                 height={200}
               />
@@ -258,9 +286,21 @@ const Aurora = React.memo(({ location }) => {
         <h4>Three Day Kp Forecast</h4>
 
         <Row>
-          <Col></Col>
-          <Col>hello</Col>
-          <Col>nice</Col>
+          <Col>
+            {firstday.map(first => {
+              return <GenerateTime key={first.start} time={first} />;
+            })}
+          </Col>
+          <Col>
+            {secondDay.map(second => {
+              return <GenerateTime key={second.start} time={second} />;
+            })}
+          </Col>
+          <Col>
+            {thirdDay.map(third => {
+              return <GenerateTime key={third.start} time={third} />;
+            })}
+          </Col>
         </Row>
       </div>
     </>

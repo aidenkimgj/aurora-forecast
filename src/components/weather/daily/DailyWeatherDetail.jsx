@@ -4,7 +4,7 @@ import { weatherIconDay } from '../WeatherIcons';
 import dateFormat from 'dateformat';
 
 const DailyWeatherDetail = React.memo(({ daily, offset }) => {
-  console.log('info===>', daily);
+  // console.log('info===>', daily);
   const [weather, setWeather] = useState(daily);
 
   const description = () => {
