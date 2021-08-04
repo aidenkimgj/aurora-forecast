@@ -282,26 +282,27 @@ const Aurora = React.memo(({ location }) => {
             <h6>Severe &nbsp;&nbsp;&nbsp;{middleLatitude[2]}%</h6>
           </Col>
         </Row>
+        <div className="threedays_block">
+          <h4>Three Day Kp Forecast</h4>
 
-        <h4>Three Day Kp Forecast</h4>
-
-        <Row>
-          <Col>
-            {firstday.map(first => {
-              return <GenerateTime key={first.start} time={first} />;
-            })}
-          </Col>
-          <Col>
-            {secondDay.map(second => {
-              return <GenerateTime key={second.start} time={second} />;
-            })}
-          </Col>
-          <Col>
-            {thirdDay.map(third => {
-              return <GenerateTime key={third.start} time={third} />;
-            })}
-          </Col>
-        </Row>
+          <Row>
+            <Col>
+              {firstday.map(first => {
+                return <GenerateTime key={first.start} time={first} />;
+              })}
+            </Col>
+            <Col>
+              {secondDay.map(second => {
+                return <GenerateTime key={second.start} time={second} />;
+              })}
+            </Col>
+            <Col>
+              {thirdDay.map(third => {
+                return <GenerateTime key={third.start} time={third} />;
+              })}
+            </Col>
+          </Row>
+        </div>
       </div>
     </>
   );

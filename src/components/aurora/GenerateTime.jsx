@@ -19,7 +19,7 @@ const GenerateTime = ({ time }) => {
     const utcStart = Date.parse(time.start) + stadardOffset;
     const utcEnd = Date.parse(time.end) + stadardOffset;
     const data = time.value;
-    const style = time.colour;
+    const style = time.value === '3' ? 'green' : time.colour;
     const periodUtc = `${dateFormat(
       new Date(utcStart),
       'HH'
@@ -53,16 +53,32 @@ const GenerateTime = ({ time }) => {
 
   return (
     <>
-      <div>
-        <Row>
-          <span>{utcPeriod} UTC</span>
-        </Row>
-        <Row>
-          <span>{localPeriod} Local</span>
-        </Row>
-        <Row>
-          <span style={{ color: color }}>{value}</span>
-        </Row>
+      <div className="threedays_kp">
+        {time.now ? (
+          <div className="threedays_ture">
+            <Row>
+              <span>{utcPeriod} UTC</span>
+            </Row>
+            <Row>
+              <span>{localPeriod} Local</span>
+            </Row>
+            <Row>
+              <span style={{ color: color }}>{value}</span>
+            </Row>
+          </div>
+        ) : (
+          <div className="threedays_false">
+            <Row>
+              <span>{utcPeriod} UTC</span>
+            </Row>
+            <Row>
+              <span>{localPeriod} Local</span>
+            </Row>
+            <Row>
+              <span style={{ color: color }}>{value}</span>
+            </Row>
+          </div>
+        )}
       </div>
     </>
   );
