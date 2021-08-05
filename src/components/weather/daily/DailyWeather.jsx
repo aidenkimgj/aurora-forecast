@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'reactstrap';
+import { useDispatch } from 'react-redux';
+import { setOffset, setTimeZone } from '../../../store';
 import DailyWeatherDetail from './DailyWeatherDetail';
 
-const DailyWeather = React.memo(({ dailyWeather, offset }) => {
+const DailyWeather = React.memo(({ dailyWeather, offset, timezone }) => {
   const [weather, setWeather] = useState([]);
+  const [time, setTime] = useState(offset);
+  const [zone, setZone] = useState(timezone);
+
+  const dispatch = useDispatch();
 
   const nextSevenDays = () => {
     let arr = [];
@@ -11,8 +17,13 @@ const DailyWeather = React.memo(({ dailyWeather, offset }) => {
       arr = [...arr, dailyWeather[i]];
     }
     setWeather(arr);
-    console.log(weather, '설정된 데일리');
+    setTime(offset);
+    setZone(timezone);
+    console.log(offset, '설정된 데일리');
   };
+
+  dispatch(setOffset(time));
+  dispatch(setTimeZone(zone));
 
   useEffect(() => {
     nextSevenDays();
