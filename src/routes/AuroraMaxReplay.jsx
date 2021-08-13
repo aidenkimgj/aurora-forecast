@@ -42,9 +42,10 @@ const AuroraMaxReplay = () => {
     if (
       currentMonth === '05' ||
       currentMonth === '06' ||
-      currentMonth === '07'
+      currentMonth === '07' ||
+      currentMonth === '08'
     ) {
-      alert('No videos in May, June, July');
+      alert('No videos in May, June, July, early August');
     }
   };
 
