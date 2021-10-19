@@ -46,29 +46,6 @@ const Aurora = React.memo(({ location }) => {
   };
 
   const getThreeday = threeday => {
-    // let arr;
-
-    // threeday.forEach((element, index) => {
-    //   switch (index) {
-    //     case 0:
-    //       arr = element;
-    //       break;
-    //     case 1:
-    //       element.forEach(e => {
-    //         arr = [...arr, e];
-    //       });
-    //       break;
-    //     case 2:
-    //       element.map(e => (arr = [...arr, e]));
-
-    //       break;
-    //     default:
-    //       throw new Error('Something is Wrong!');
-    //   }
-    // });
-
-    // setThreeDays(arr);
-
     let arr0;
     let arr1;
     let arr2;
@@ -96,18 +73,6 @@ const Aurora = React.memo(({ location }) => {
     console.log('arr1', arr1);
     console.log('arr2', arr2);
   };
-
-  // const generateTime = time => {
-  //   const basicTime = new Date(time.start);
-  //   const stadardOffset = basicTime.getTimezoneOffset() * 60 * 1000;
-  //   const utc = Date.parse(time.start) + stadardOffset;
-
-  //   console.log(new Date(utc), 'utc 시간');
-
-  //   console.log(new Date(utc + offset * 1000), '현지시간');
-  //   console.log(dateFormat(new Date(utc), 'mmm d yyyy'), 'Date format');
-  //   return <div>{dateFormat(new Date(utc), 'mmm d yyyy')}</div>;
-  // };
 
   const getHighestNowcast = async () => {
     const data = await axios.get(
