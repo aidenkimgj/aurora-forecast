@@ -79,6 +79,7 @@ const Navigation = ({ isLoggedIn }) => {
                 <div className="drop-menu">
                   <Dropdown nav isOpen={dropdownOpen}>
                     <DropdownToggle
+                      id="toggle"
                       nav
                       caret
                       onMouseEnter={mouseOn}
@@ -127,9 +128,3 @@ const Navigation = ({ isLoggedIn }) => {
 };
 
 export default Navigation;
-
-{
-  /* <Link to="/auroramax" className="text-decoration-none">
-  AuroraMax
-</Link>; */
-}
