@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/aurora-web/static/css/main.12c1f2a4.chunk.css",
-    "main.js": "/aurora-web/static/js/main.630fb4e0.chunk.js",
-    "main.js.map": "/aurora-web/static/js/main.630fb4e0.chunk.js.map",
+    "main.css": "/aurora-web/static/css/main.dc7d5e71.chunk.css",
+    "main.js": "/aurora-web/static/js/main.190b0c4f.chunk.js",
+    "main.js.map": "/aurora-web/static/js/main.190b0c4f.chunk.js.map",
     "runtime-main.js": "/aurora-web/static/js/runtime-main.44f2f1d6.js",
     "runtime-main.js.map": "/aurora-web/static/js/runtime-main.44f2f1d6.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/aurora-web/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.eb516177.chunk.js": "/aurora-web/static/js/2.eb516177.chunk.js",
-    "static/js/2.eb516177.chunk.js.map": "/aurora-web/static/js/2.eb516177.chunk.js.map",
+    "static/js/2.41101253.chunk.js": "/aurora-web/static/js/2.41101253.chunk.js",
+    "static/js/2.41101253.chunk.js.map": "/aurora-web/static/js/2.41101253.chunk.js.map",
     "index.html": "/aurora-web/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/aurora-web/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.12c1f2a4.chunk.css.map": "/aurora-web/static/css/main.12c1f2a4.chunk.css.map",
-    "static/js/2.eb516177.chunk.js.LICENSE.txt": "/aurora-web/static/js/2.eb516177.chunk.js.LICENSE.txt",
+    "static/css/main.dc7d5e71.chunk.css.map": "/aurora-web/static/css/main.dc7d5e71.chunk.css.map",
+    "static/js/2.41101253.chunk.js.LICENSE.txt": "/aurora-web/static/js/2.41101253.chunk.js.LICENSE.txt",
     "static/media/base.scss": "/aurora-web/static/media/northernlight2.122e5afa.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.44f2f1d6.js",
     "static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.eb516177.chunk.js",
-    "static/css/main.12c1f2a4.chunk.css",
-    "static/js/main.630fb4e0.chunk.js"
+    "static/js/2.41101253.chunk.js",
+    "static/css/main.dc7d5e71.chunk.css",
+    "static/js/main.190b0c4f.chunk.js"
   ]
 }
