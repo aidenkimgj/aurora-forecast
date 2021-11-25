@@ -26,7 +26,7 @@ const AppRouter = ({ isLoggedIn, location }) => {
           {isLoggedIn ? (
             <>
               <Route
-                path="/"
+                path="/aurora-forecast"
                 exact
                 component={withProps(Forecast, { position: location })}
               />

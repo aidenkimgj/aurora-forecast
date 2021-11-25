@@ -50,7 +50,7 @@ const Navigation = ({ isLoggedIn }) => {
             <NavItem>
               <Form className="col pr-3 p-1">
                 <NavLink>
-                  <Link to="/" className="text-decoration-none">
+                  <Link to="/aurora-forecast" className="text-decoration-none">
                     Forecast
                   </Link>
                 </NavLink>
