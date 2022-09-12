@@ -1,6 +1,6 @@
 # Aurora Forecast
 
-Take a look live [here](https://aidenkimgj.github.io/aurora-web/)
+Take a look live [here](https://aidenkimgj.github.io/aurora-forecast/)
 
 ## Description
 
