@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/aurora-forecast/static/css/main.80ec5db1.chunk.css",
-    "main.js": "/aurora-forecast/static/js/main.1d074f8a.chunk.js",
-    "main.js.map": "/aurora-forecast/static/js/main.1d074f8a.chunk.js.map",
+    "main.js": "/aurora-forecast/static/js/main.87bc3c1e.chunk.js",
+    "main.js.map": "/aurora-forecast/static/js/main.87bc3c1e.chunk.js.map",
     "runtime-main.js": "/aurora-forecast/static/js/runtime-main.4206e1b8.js",
     "runtime-main.js.map": "/aurora-forecast/static/js/runtime-main.4206e1b8.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/aurora-forecast/static/css/2.4c97ca4f.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.c3205ebc.chunk.js",
     "static/css/main.80ec5db1.chunk.css",
-    "static/js/main.1d074f8a.chunk.js"
+    "static/js/main.87bc3c1e.chunk.js"
   ]
 }
