@@ -23,7 +23,7 @@ const AppRouter = ({ isLoggedIn, location }) => {
       <Header />
       <Container id="main-body">
         <Switch>
-          {isLoggedIn ? (
+          {/* {isLoggedIn ? ( */}
             <>
               <Route
                 path="/aurora-forecast"
@@ -43,11 +43,11 @@ const AppRouter = ({ isLoggedIn, location }) => {
               <Route path="/live" exact component={AuroraMaxLive} />
               <Route path="/replay" exact component={AuroraMaxReplay} />
             </>
-          ) : (
+          {/* ) : (
             <>
               <Route path="*" exact component={Auth} />
             </>
-          )}
+          )} */}
         </Switch>
       </Container>
     </>

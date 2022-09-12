@@ -37,7 +37,7 @@ const Navigation = ({ isLoggedIn }) => {
   return (
     <Navbar color="dark" dark expand="lg" className="sticky-top">
       <Container>
-        <Link to="/" className="text-white text-decoration-none blog-name">
+        <Link to="/aurora-forecast" className="text-white text-decoration-none blog-name">
           <h2 style={{ fontWeight: 'bold' }}>Aurora World</h2>
         </Link>
         <NavbarToggler onClick={handleToggle} />
